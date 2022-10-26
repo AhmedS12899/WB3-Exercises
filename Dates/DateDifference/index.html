@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container mt-3 border border-dark border p-4">
+        <div class="row">
+            <div class="col-6">
+                <label for="dateText">Travel Date:</label>
+                <input type="date" name="date" id="dateField">
+                <p class="pt-4" id="paraField"></p>
+            </div>
+            <div class="col-4 ps-5">
+                <input type="button" value="Submit" id="submitBtn">
+            </div>
+        </div>
+    </div>
+    <script>
+        "use strict";
+
+        window.onload = init;
+
+        function init() {
+            let submitBtn = document.getElementById("submitBtn");
+            submitBtn.onclick = dateDiff;
+        }
+
+        function dateDiff() {
+            let miliSecsInDay = 1000 * 60 * 60 * 24;
+            let todayDateInMiliSecs = new Date().getTime();
+
+            let dateField = document.getElementById("dateField");
+            let date = new Date(dateField.value);
+
+            let travelDateInMiliSecs = date.getTime();
+
+            let diff = travelDateInMiliSecs - todayDateInMiliSecs;
+
+            let paraField = document.getElementById("paraField");
+            paraField.innerHTML = "Your trip is in " + Math.round(diff / miliSecsInDay) + " days";
+        }
+    </script>
+</body>
+
+</html>
