@@ -40,13 +40,12 @@
 
             let dateField = document.getElementById("dateField");
             let date = new Date(dateField.value);
-
             let travelDateInMiliSecs = date.getTime();
 
             let diff = travelDateInMiliSecs - todayDateInMiliSecs;
 
             let paraField = document.getElementById("paraField");
-            paraField.innerHTML = "Your trip is in " + Math.round(diff / miliSecsInDay) + " days";
+            paraField.innerHTML = "Your trip is in " + Math.round(diff / miliSecsInDay + 1) + " days";
         }
     </script>
 </body>
